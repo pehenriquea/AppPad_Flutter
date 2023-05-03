@@ -23,9 +23,7 @@ class _MyAppState extends State<_MyApp> {
     return const MaterialApp(
       title: "AppPad",
       debugShowCheckedModeBanner: false,
-      home: Home(
-          r: 0xFF000000
-      ),
+      home: Home(cor: 0xFF000000),
     );
   }
 }
@@ -39,8 +37,8 @@ import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 //flutter pub add flutter_slider_drawer
 
 class Home extends StatelessWidget {
-  const Home({Key? key, required this.r, }) : super(key: key);
-  final int r;
+  const Home({Key? key, required this.cor, }) : super(key: key);
+  final int cor;
   final String title = "AppPad";
 
   String percentageModifier(double value) {
@@ -95,9 +93,9 @@ class Home extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: const [
-                          sliderhigh(),
-                          slidermid(),
-                          sliderlow(),
+                          SliderHigh(),
+                          SliderMid(),
+                          SliderLow(),
                         ],
                       ),
                     ),
@@ -122,69 +120,69 @@ class Home extends StatelessWidget {
                 ),
               ),
               child: Container(
-                  color: Color(r),
+                  color: Color(cor),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: const [
-                              button(
+                              Button(
                                 texto: "C",
-                                path: "assets/audios/C Pad.mp3",
+                                path: "assets/audios/C.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "C#",
-                                path: "assets/audios/CSharp Pad.mp3",
+                                path: "assets/audios/CSharp.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "D",
-                                path: "assets/audios/D Pad.mp3",
+                                path: "assets/audios/D.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "D#",
-                                path: "assets/audios/DSharp Pad.mp3",
+                                path: "assets/audios/DSharp.mp3",
                               ),
                             ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: const [
-                              button(
+                              Button(
                                 texto: "E",
-                                path: "assets/audios/E Pad.mp3",
+                                path: "assets/audios/E.mp3",
                               ),
-                              button(
+                              Button(
                                 texto:  "F",
-                                path: "assets/audios/F Pad.mp3",
+                                path: "assets/audios/F.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "F#",
-                                path: "assets/audios/FSharp Pad.mp3",
+                                path: "assets/audios/FSharp.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "G",
-                                path: "assets/audios/G Pad.mp3",
+                                path: "assets/audios/G.mp3",
                               ),
                             ]),
 
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: const [
-                              button(
+                              Button(
                                 texto: "G#",
-                                path: "assets/audios/GSharp Pad.mp3",
+                                path: "assets/audios/GSharp.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "A",
-                                path: "assets/audios/A Pad.mp3",
+                                path: "assets/audios/A.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "A#",
-                                path: "assets/audios/ASharp Pad.mp3",
+                                path: "assets/audios/ASharp.mp3",
                               ),
-                              button(
+                              Button(
                                 texto: "B",
-                                path: "assets/audios/B Pad.mp3",
+                                path: "assets/audios/B.mp3",
                               ),
                             ]),
                       ]
@@ -203,23 +201,23 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //flutter pub add shared_preferences
 
-class sliderhigh extends StatefulWidget {
-  const sliderhigh({Key? key}) : super(key: key);
+class SliderHigh extends StatefulWidget {
+  const SliderHigh({Key? key}) : super(key: key);
 
   @override
-  State<sliderhigh> createState() => _sliderhighState();
+  State<SliderHigh> createState() => _SliderHighState();
 }
 
-class _sliderhighState extends State<sliderhigh> {
+class _SliderHighState extends State<SliderHigh> {
   String percentageModifier(double value) {
     return 'HIGH';
   }
 
   double _counter1 = 0;
 
-  _contagem(_conta1) async {
+  _contagem(conta1) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('counter1', _conta1);
+    await prefs.setDouble('counter1', conta1);
     setState(() {
       _counter1 = (prefs.getDouble('counter1') ?? 50);
     });
@@ -232,9 +230,9 @@ class _sliderhighState extends State<sliderhigh> {
   }
 
   _pegaContador() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _counter1 = (_prefs.getDouble('counter1') ?? 50);
+      _counter1 = (prefs.getDouble('counter1') ?? 50);
     });
   }
 
@@ -260,29 +258,29 @@ class _sliderhighState extends State<sliderhigh> {
               modifier: percentageModifier
           )
       ),
-      onChange: (double value) {_contagem(value);},
+      onChangeEnd: (double value) {_contagem(value);},
       initialValue: _counter1,
     );
   }
 }
 
-class slidermid extends StatefulWidget {
-  const slidermid({Key? key}) : super(key: key);
+class SliderMid extends StatefulWidget {
+  const SliderMid({Key? key}) : super(key: key);
 
   @override
-  State<slidermid> createState() => _slidermidState();
+  State<SliderMid> createState() => _SliderMidState();
 }
 
-class _slidermidState extends State<slidermid> {
+class _SliderMidState extends State<SliderMid> {
   String percentageModifier(double value) {
     return 'MID';
   }
 
   double _counter2 = 0;
 
-  _contagem(_conta2) async {
+  _contagem(conta2) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('counter2', _conta2);
+    await prefs.setDouble('counter2', conta2);
     setState(() {
       _counter2 = (prefs.getDouble('counter2') ?? 50);
     });
@@ -295,9 +293,9 @@ class _slidermidState extends State<slidermid> {
   }
 
   _pegaContador1() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _counter2 = (_prefs.getDouble('counter2') ?? 50);
+      _counter2 = (prefs.getDouble('counter2') ?? 50);
     });
   }
 
@@ -329,23 +327,23 @@ class _slidermidState extends State<slidermid> {
   }
 }
 
-class sliderlow extends StatefulWidget {
-  const sliderlow({Key? key}) : super(key: key);
+class SliderLow extends StatefulWidget {
+  const SliderLow({Key? key}) : super(key: key);
 
   @override
-  State<sliderlow> createState() => _sliderlowState();
+  State<SliderLow> createState() => _SliderLowState();
 }
 
-class _sliderlowState extends State<sliderlow> {
+class _SliderLowState extends State<SliderLow> {
   String percentageModifier(double value) {
     return 'LOW';
   }
 
   double _counter3 = 0;
 
-  _contagem(_conta3) async {
+  _contagem(conta3) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('counter3', _conta3);
+    await prefs.setDouble('counter3', conta3);
     setState(() {
       _counter3 = (prefs.getDouble('counter3') ?? 50);
     });
@@ -358,9 +356,9 @@ class _sliderlowState extends State<sliderlow> {
   }
 
   _pegaContador() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _counter3 = (_prefs.getDouble('counter3') ?? 50);
+      _counter3 = (prefs.getDouble('counter3') ?? 50);
     });
   }
 
@@ -393,22 +391,21 @@ class _sliderlowState extends State<sliderlow> {
 }
 
 //button
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 //flutter pub add assets_audio_player
-import 'package:audioplayers/audioplayers.dart';
-//flutter pub add audioplayers
 
-class button extends StatefulWidget {
-  const button({Key? key, required this.texto, required this.path}) : super(key: key);
+class Button extends StatefulWidget {
+  const Button({Key? key, required this.texto, required this.path}) : super(key: key);
   final String texto;
   final String path;
 
   @override
-  State<button> createState() => _buttonState();
+  State<Button> createState() => _ButtonState();
 }
 
-class _buttonState extends State<button> {
+class _ButtonState extends State<Button> {
   int color = 0xFFEDEDED;
   final assetsAudioPlayer = AssetsAudioPlayer();
 
@@ -426,15 +423,117 @@ class _buttonState extends State<button> {
             color = 0xFF757575;
           });
           assetsAudioPlayer.open(
-            Audio(widget.path),
-            loopMode: LoopMode.single
+              Audio(widget.path),
+              loopMode: LoopMode.single,
+              volume: 0.001
           );
+          Timer(const Duration(milliseconds: 250), () {
+            assetsAudioPlayer.setVolume(0.001);
+            Timer(const Duration(milliseconds: 250), () {
+              assetsAudioPlayer.setVolume(0.005);
+              Timer(const Duration(milliseconds: 250), () {
+                assetsAudioPlayer.setVolume(0.008);
+                Timer(const Duration(milliseconds: 250), () {
+                  assetsAudioPlayer.setVolume(0.01);
+                  Timer(const Duration(milliseconds: 250), () {
+                    assetsAudioPlayer.setVolume(0.03);
+                    Timer(const Duration(milliseconds: 250), () {
+                      assetsAudioPlayer.setVolume(0.05);
+                      Timer(const Duration(milliseconds: 250), () {
+                        assetsAudioPlayer.setVolume(0.09);
+                        Timer(const Duration(milliseconds: 250), () {
+                          assetsAudioPlayer.setVolume(0.1);
+                          Timer(const Duration(milliseconds: 250), () {
+                            assetsAudioPlayer.setVolume(0.2);
+                            Timer(const Duration(milliseconds: 250), () {
+                              assetsAudioPlayer.setVolume(0.3);
+                              Timer(const Duration(milliseconds: 250), () {
+                                assetsAudioPlayer.setVolume(0.4);
+                                Timer(const Duration(milliseconds: 250), () {
+                                  assetsAudioPlayer.setVolume(0.5);
+                                  Timer(const Duration(milliseconds: 250), () {
+                                    assetsAudioPlayer.setVolume(0.6);
+                                    Timer(const Duration(milliseconds: 250), () {
+                                      assetsAudioPlayer.setVolume(0.7);
+                                      Timer(const Duration(milliseconds: 250), () {
+                                        assetsAudioPlayer.setVolume(0.8);
+                                        Timer(const Duration(milliseconds: 250), () {
+                                          assetsAudioPlayer.setVolume(0.93);
+                                          Timer(const Duration(milliseconds: 250), () {
+                                            assetsAudioPlayer.setVolume(1);
+                                          });
+                                        });
+                                      });
+                                    });
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
         },
         onLongPress: () {
           setState(() {
             color = 0xFFEDEDED;
           });
-          assetsAudioPlayer.stop();
+          Timer(const Duration(milliseconds: 250), () {
+              assetsAudioPlayer.setVolume(0.93);
+              Timer(const Duration(milliseconds: 250), () {
+                assetsAudioPlayer.setVolume(0.8);
+                Timer(const Duration(milliseconds: 250), () {
+                  assetsAudioPlayer.setVolume(0.7);
+                  Timer(const Duration(milliseconds: 250), () {
+                    assetsAudioPlayer.setVolume(0.6);
+                    Timer(const Duration(milliseconds: 250), () {
+                      assetsAudioPlayer.setVolume(0.5);
+                      Timer(const Duration(milliseconds: 250), () {
+                        assetsAudioPlayer.setVolume(0.4);
+                        Timer(const Duration(milliseconds: 250), () {
+                          assetsAudioPlayer.setVolume(0.3);
+                          Timer(const Duration(milliseconds: 250), () {
+                            assetsAudioPlayer.setVolume(0.2);
+                            Timer(const Duration(milliseconds: 250), () {
+                              assetsAudioPlayer.setVolume(0.1);
+                              Timer(const Duration(milliseconds: 250), () {
+                                assetsAudioPlayer.setVolume(0.09);
+                                Timer(const Duration(milliseconds: 250), () {
+                                  assetsAudioPlayer.setVolume(0.05);
+                                  Timer(const Duration(milliseconds: 250), () {
+                                    assetsAudioPlayer.setVolume(0.03);
+                                    Timer(const Duration(milliseconds: 250), () {
+                                      assetsAudioPlayer.setVolume(0.01);
+                                      Timer(const Duration(milliseconds: 250), () {
+                                        assetsAudioPlayer.setVolume(0.008);
+                                        Timer(const Duration(milliseconds: 250), () {
+                                          assetsAudioPlayer.setVolume(0.004);
+                                          Timer(const Duration(milliseconds: 250), () {
+                                            assetsAudioPlayer.setVolume(0.001);
+                                            Timer(const Duration(milliseconds: 250), () {
+                                              assetsAudioPlayer.stop();
+                                            });
+                                          });
+                                        });
+                                      });
+                                    });
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+          });
         },
         style: ElevatedButton.styleFrom(
             backgroundColor: Color(color)
@@ -449,3 +548,18 @@ class _buttonState extends State<button> {
     );
   }
 }
+
+//assets
+  assets:
+    - assets/audios/A.mp3
+    - assets/audios/ASharp.mp3
+    - assets/audios/B.mp3
+    - assets/audios/C.mp3
+    - assets/audios/CSharp.mp3
+    - assets/audios/D.mp3
+    - assets/audios/DSharp.mp3
+    - assets/audios/E.mp3
+    - assets/audios/F.mp3
+    - assets/audios/FSharp.mp3
+    - assets/audios/G.mp3
+    - assets/audios/GSharp.mp3
