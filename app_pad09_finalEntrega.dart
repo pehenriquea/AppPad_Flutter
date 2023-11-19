@@ -328,6 +328,7 @@ class Button extends StatefulWidget {
 class _ButtonState extends State<Button> {
   int color = 0xFFEDEDED;
   int _valor = 0;
+  double vol = 0.01;
   final assetsAudioPlayer = AssetsAudioPlayer();
 
   _selected(value) async {
@@ -370,82 +371,33 @@ class _ButtonState extends State<Button> {
       child: ElevatedButton(
         onPressed: () {
           setState(() {
-              if (_valor == 0){
-                color = 0xFF757575;
-                _play();
-                Timer(const Duration(milliseconds: 300), () {
-                  assetsAudioPlayer.setVolume(0.1);
-                  Timer(const Duration(milliseconds: 250), () {
-                    assetsAudioPlayer.setVolume(0.15);
-                    Timer(const Duration(milliseconds: 250), () {
-                      assetsAudioPlayer.setVolume(0.2);
-                      Timer(const Duration(milliseconds: 250), () {
-                        assetsAudioPlayer.setVolume(0.3);
-                        Timer(const Duration(milliseconds: 250), () {
-                          assetsAudioPlayer.setVolume(0.4);
-                          Timer(const Duration(milliseconds: 250), () {
-                            assetsAudioPlayer.setVolume(0.5);
-                            Timer(const Duration(milliseconds: 250), () {
-                              assetsAudioPlayer.setVolume(0.65);
-                              Timer(const Duration(milliseconds: 250), () {
-                                assetsAudioPlayer.setVolume(0.75);
-                                Timer(const Duration(milliseconds: 250), () {
-                                  assetsAudioPlayer.setVolume(0.87);
-                                  Timer(const Duration(milliseconds: 250), () {
-                                    assetsAudioPlayer.setVolume(1);
-                                  });
-                                });
-                              });
-                            });
-                          });
-                        });
-                      });
-                    });
-                  });
-                });
-                _selected(1);
-              } else {
-                color = 0xFFEDEDED;
-                Timer(const Duration(milliseconds: 250), () {
-                  assetsAudioPlayer.setVolume(0.93);
-                  Timer(const Duration(milliseconds: 250), () {
-                    assetsAudioPlayer.setVolume(0.8);
-                    Timer(const Duration(milliseconds: 250), () {
-                      assetsAudioPlayer.setVolume(0.7);
-                      Timer(const Duration(milliseconds: 250), () {
-                        assetsAudioPlayer.setVolume(0.6);
-                        Timer(const Duration(milliseconds: 250), () {
+            if (_valor == 0){
+              color = 0xFF757575;
+              _play();
+              Future.delayed(const Duration(milliseconds: 170), () {
+              assetsAudioPlayer.setVolume(0.03);
+                Future.delayed(const Duration(milliseconds: 170), () {
+                assetsAudioPlayer.setVolume(0.07);
+                  Future.delayed(const Duration(milliseconds: 170), () {
+                  assetsAudioPlayer.setVolume(0.13);
+                    Future.delayed(const Duration(milliseconds: 170), () {
+                    assetsAudioPlayer.setVolume(0.2);
+                      Future.delayed(const Duration(milliseconds: 170), () {
+                      assetsAudioPlayer.setVolume(0.3);
+                        Future.delayed(const Duration(milliseconds: 170), () {
+                        assetsAudioPlayer.setVolume(0.4);
+                          Future.delayed(const Duration(milliseconds: 170), () {
                           assetsAudioPlayer.setVolume(0.5);
-                          Timer(const Duration(milliseconds: 250), () {
-                            assetsAudioPlayer.setVolume(0.4);
-                            Timer(const Duration(milliseconds: 250), () {
-                              assetsAudioPlayer.setVolume(0.3);
-                              Timer(const Duration(milliseconds: 250), () {
-                                assetsAudioPlayer.setVolume(0.2);
-                                Timer(const Duration(milliseconds: 250), () {
-                                  assetsAudioPlayer.setVolume(0.1);
-                                  Timer(const Duration(milliseconds: 250), () {
-                                    assetsAudioPlayer.setVolume(0.09);
-                                    Timer(const Duration(milliseconds: 250), () {
-                                      assetsAudioPlayer.setVolume(0.05);
-                                      Timer(const Duration(milliseconds: 250), () {
-                                        assetsAudioPlayer.setVolume(0.03);
-                                        Timer(const Duration(milliseconds: 250), () {
-                                          assetsAudioPlayer.setVolume(0.01);
-                                          Timer(const Duration(milliseconds: 250), () {
-                                            assetsAudioPlayer.setVolume(0.008);
-                                            Timer(const Duration(milliseconds: 250), () {
-                                              assetsAudioPlayer.setVolume(0.004);
-                                              Timer(const Duration(milliseconds: 250), () {
-                                                assetsAudioPlayer.setVolume(0.001);
-                                                Timer(const Duration(milliseconds: 250), () {
-                                                  assetsAudioPlayer.stop();
-                                                });
-                                              });
-                                            });
-                                          });
-                                        });
-                                      });
+                            Future.delayed(const Duration(milliseconds: 170), () {
+                            assetsAudioPlayer.setVolume(0.6);
+                              Future.delayed(const Duration(milliseconds: 170), () {
+                              assetsAudioPlayer.setVolume(0.7);
+                                Future.delayed(const Duration(milliseconds: 170), () {
+                                assetsAudioPlayer.setVolume(0.8);
+                                  Future.delayed(const Duration(milliseconds: 170), () {
+                                  assetsAudioPlayer.setVolume(0.9);
+                                    Future.delayed(const Duration(milliseconds: 170), () {
+                                    assetsAudioPlayer.setVolume(1);
                                     });
                                   });
                                 });
@@ -457,8 +409,49 @@ class _ButtonState extends State<Button> {
                     });
                   });
                 });
-                _selected(0);
-              }
+              });
+              _selected(1);
+            } else {
+              color = 0xFFEDEDED;
+              Future.delayed(const Duration(milliseconds: 170), () {
+              assetsAudioPlayer.setVolume(0.89);
+                Future.delayed(const Duration(milliseconds: 170), () {
+                assetsAudioPlayer.setVolume(0.81);
+                  Future.delayed(const Duration(milliseconds: 170), () {
+                  assetsAudioPlayer.setVolume(0.7);
+                    Future.delayed(const Duration(milliseconds: 170), () {
+                    assetsAudioPlayer.setVolume(0.6);
+                      Future.delayed(const Duration(milliseconds: 170), () {
+                      assetsAudioPlayer.setVolume(0.5);
+                        Future.delayed(const Duration(milliseconds: 170), () {
+                        assetsAudioPlayer.setVolume(0.4);
+                          Future.delayed(const Duration(milliseconds: 170), () {
+                          assetsAudioPlayer.setVolume(0.3);
+                            Future.delayed(const Duration(milliseconds: 170), () {
+                            assetsAudioPlayer.setVolume(0.2);
+                              Future.delayed(const Duration(milliseconds: 170), () {
+                              assetsAudioPlayer.setVolume(0.1);
+                                Future.delayed(const Duration(milliseconds: 170), () {
+                                assetsAudioPlayer.setVolume(0.04);
+                                  Future.delayed(const Duration(milliseconds: 170), () {
+                                  assetsAudioPlayer.setVolume(0.01);
+                                    Future.delayed(const Duration(milliseconds: 170), () {
+                                    assetsAudioPlayer.setVolume(0);
+                                    assetsAudioPlayer.stop();
+                                    });
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+              _selected(0);
+            }
           });
         },
         onLongPress: (){
